@@ -50,7 +50,7 @@ class ProfileController extends CoreController
     public function store(Request $request, UploadHandler $uploadHandler): \Illuminate\Http\JsonResponse
     {
         $input = $request->all();
-        dd($input);
+        // dd($input);
         $id = Auth::user()->id;
 
         if ($request->hasFile('fileUpload')) {
