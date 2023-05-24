@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @author Dodi Priyanto<dodi.priyanto76@gmail.com>
  */
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +17,7 @@ class SetupMigration extends Migration
      */
     public function up()
     {
-        Schema::create( 'conf_group', function (Blueprint $table) {
+        Schema::create('conf_group', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
             $table->string('code')->nullable(false);
@@ -27,7 +29,7 @@ class SetupMigration extends Migration
             $table->string('deleted_by')->nullable();
         });
 
-        Schema::create( 'conf_setting', function (Blueprint $table) {
+        Schema::create('conf_setting', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
             $table->string('parameter');
@@ -40,7 +42,7 @@ class SetupMigration extends Migration
             $table->string('deleted_by')->nullable();
         });
 
-        Schema::create( 'conf_menu', function (Blueprint $table) {
+        Schema::create('conf_menu', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
             $table->uuid('parent_id')->nullable(true);
@@ -63,10 +65,17 @@ class SetupMigration extends Migration
             $table->uuid('group_id');
             $table->string('fullname');
             $table->string('username');
-//            $table->string('email')->unique()->nullable(true);
+            $table->string('nik');
+            $table->string('alamat');
+            //            $table->string('email')->unique()->nullable(true);
             $table->string('email')->nullable(true);
+            $table->string('no_hp');
+            $table->string('tempat_lahir');
+            $table->string('tgl_lahir');
             $table->string('password');
             $table->string('profile_picture')->nullable(true);
+            $table->string('dokument')->nullable(true);
+            $table->enum('status', ['0', '1'])->default('1');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
@@ -96,10 +105,10 @@ class SetupMigration extends Migration
      */
     public function down()
     {
-//        Schema::dropIfExists('conf_group');
-//        Schema::dropIfExists('conf_setting');
-//        Schema::dropIfExists('conf_menu');
-//        Schema::dropIfExists('conf_users');
-//        Schema::dropIfExists('conf_permission');
+        //        Schema::dropIfExists('conf_group');
+        //        Schema::dropIfExists('conf_setting');
+        //        Schema::dropIfExists('conf_menu');
+        //        Schema::dropIfExists('conf_users');
+        //        Schema::dropIfExists('conf_permission');
     }
 }
