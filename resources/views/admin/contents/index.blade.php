@@ -20,7 +20,7 @@
                         <div class="media">
                             <div class="media-body overflow-hidden">
                                 <p class="text-truncate font-size-14 mb-2">Unlat</p>
-                                <h4 class="mb-0">5</h4>
+                                <h4 class="mb-0">{{ $unlat }}</h4>
                             </div>
                             <div class="text-primary">
                                 <i class="ri-stack-line font-size-24"></i>
@@ -35,7 +35,7 @@
                         <div class="media">
                             <div class="media-body overflow-hidden">
                                 <p class="text-truncate font-size-14 mb-2">Aggota Aktif</p>
-                                <h4 class="mb-0">20</h4>
+                                <h4 class="mb-0">{{ $user_aktif }}</h4>
                             </div>
                             <div class="text-primary">
                                 <i class="ri-store-2-line font-size-24"></i>
@@ -50,7 +50,7 @@
                         <div class="media">
                             <div class="media-body overflow-hidden">
                                 <p class="text-truncate font-size-14 mb-2">Aggota Tidak Aktif</p>
-                                <h4 class="mb-0">2</h4>
+                                <h4 class="mb-0">{{ $user_inaktif }}</h4>
                             </div>
                             <div class="text-primary">
                                 <i class="ri-briefcase-4-line font-size-24"></i>

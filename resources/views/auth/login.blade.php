@@ -8,7 +8,7 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{asset('nazox/assets/images/favicon.ico')}}">
+        <link rel="shortcut icon" href="{{asset('nazox/assets/images/favicon-cn.ico')}}">
 
         <!-- Bootstrap Css -->
         <link href="{{asset('nazox/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -112,11 +112,11 @@
                                     <div>
                                         <div class="text-center">
                                             <div>
-                                                <a href="index.html" class="logo"><img src="{{asset('nazox/assets/images/logo-dark.png')}}" height="20" alt="logo"></a>
+                                                <a href="index.html" class="logo"><img src="{{asset('nazox/assets/images/logo-dark-cn.png')}}" height="40" alt="logo"></a>
                                             </div>
 
                                             <h4 class="font-size-18 mt-4">Welcome Back !</h4>
-                                            <p class="text-muted">Sign in to continue to Nazox.</p>
+                                            <p class="text-muted">Sign in to continue to Cakra Niskala Dashboard.</p>
                                         </div>
 
                                         <div class="p-2 mt-5">
@@ -151,7 +151,7 @@
 
                                         <div class="mt-5 text-center">
                                             <p>Don't have an account ? <a href="{{ route('register') }}" class="font-weight-medium text-primary"> Register </a> </p>
-                                            <p>© 2020 Nazox. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
+                                            <p>© {{ now()->year }} Crafted with <i class="mdi mdi-heart text-danger"></i> by Cakra Niskala</p>
                                         </div>
                                     </div>
 

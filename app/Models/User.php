@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @author Dodi Priyanto<dodi.priyanto76@gmail.com>
  */
+
 namespace App\Models;
 
 use DigitalCloud\Blameable\Traits\Blameable;
@@ -34,11 +36,24 @@ class User extends Authenticatable implements Auditable
     protected $fillable = [
         'id',
         'group_id',
+        'nik',
         'fullname',
         'username',
+        'alamat',
+        'agama_id',
+        'tempat_lahir',
+        'tgl_lahir',
+        'sabuk_id',
+        'unlat_id',
+        'kategori_id',
         'email',
+        'no_hp',
         'password',
         'profile_picture',
+        'dokument',
+        'status',
+        'created_by',
+        'updated_by',
     ];
 
     /**
@@ -64,5 +79,25 @@ class User extends Authenticatable implements Auditable
     public function group()
     {
         return $this->hasOne(Group::class, 'id', 'group_id');
+    }
+
+    public function unlat()
+    {
+        return $this->hasOne(Unlat::class, 'id', 'unlat_id');
+    }
+
+    public function agama()
+    {
+        return $this->hasOne(Agama::class, 'id', 'agama_id');
+    }
+
+    public function kategori()
+    {
+        return $this->hasOne(Kategori::class, 'id', 'kategori_id');
+    }
+
+    public function sabuk()
+    {
+        return $this->hasOne(Sabuk::class, 'id', 'sabuk_id');
     }
 }

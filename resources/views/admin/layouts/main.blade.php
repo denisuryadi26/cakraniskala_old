@@ -9,8 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="ws_url" content="{{ env('WS_URL') }}">
     <meta name="user_id" content="{{Auth::id() }}">
-    <link rel="apple-touch-icon" href="{{asset('img/icon/favicon.ico')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/icon/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('img/icon/favicon-cn.ico')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/icon/favicon-cn.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
 
     <meta charset="utf-8">
@@ -29,7 +29,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('nazox/assets/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('nazox/assets/images/favicon-cn.ico')}}">
 
     <!-- jquery.vectormap css -->
     <link href="{{asset('nazox/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet" type="text/css" />

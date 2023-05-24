@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Dodi Priyanto<dodi.priyanto76@gmail.com>
  */
@@ -24,16 +25,16 @@ class UserService extends CoreService
     public function formValidate($request)
     {
         $rules = [
-//            'email' => 'required|min:1|unique:conf_users,email,NULL,id,deleted_at,NULL'
+            //            'email' => 'required|min:1|unique:conf_users,email,NULL,id,deleted_at,NULL'
         ];
         $messages = [
             'email.unique' => 'Email sudah terdaftar.',
         ];
         $validator = Validator::make($request, $rules, $messages);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return [
-                'status'=> 'error',
+                'status' => 'error',
                 'message' => $messages
             ];
         }
@@ -45,12 +46,23 @@ class UserService extends CoreService
         return $this->userRepository->all();
     }
 
+    public function countActif()
+    {
+        return User::where('status', '1')->count();
+    }
+
+    public function countInactif()
+    {
+        return User::where('status', '0')->count();
+    }
+
     public function find($id, $relation = null)
     {
         return $this->userRepository->find($id, $relation);
     }
 
-    public function loadDataTable($access){
+    public function loadDataTable($access)
+    {
         $model = User::withoutTrashed()->with('group')->get();
         return $this->privilageBtnDatatable($model, $access);
     }
@@ -63,22 +75,18 @@ class UserService extends CoreService
         Request $request,
         $directory = null,
         $userId = null
-    )
-    {
-        if ($userId){
-
-        }else{
-
+    ) {
+        if ($userId) {
+        } else {
         }
 
         if ($request->hasFile('fileUpload')) {
             $file = $request['fileUpload'];
-            $filename = $directory.'/'.$this->random_string(20).'.'.$file->extension();
-            $file->storeAs("public/images/",$filename);
+            $filename = $directory . '/' . $this->random_string(20) . '.' . $file->extension();
+            $file->storeAs("public/images/", $filename);
             return $filename;
         };
         return $user;
-
     }
 
     public function deleteFile($path)
@@ -89,6 +97,4 @@ class UserService extends CoreService
             dd('File does not exists.');
         }
     }
-
-
 }

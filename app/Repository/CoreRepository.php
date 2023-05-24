@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Dodi Priyanto<dodi.priyanto76@gmail.com>
  */
@@ -45,13 +46,21 @@ class CoreRepository
         return $this->model->withoutTrashed()->get();
     }
 
+    public function count($relation = null)
+    {
+        if ($relation) {
+            return $this->model->withoutTrashed()->with($relation)->count();
+        }
+
+        return $this->model->withoutTrashed()->count();
+    }
+
     public function save(array $data, $callback = null)
     {
         $id = $data['id'];
         if ($id) {
             $record = $this->find($id);
-            if ($callback)
-            {
+            if ($callback) {
                 $record->update($data);
                 return $record;
             }

@@ -53,9 +53,12 @@
                         <tr>
                             <th width="3%" class="text-center">No</th>
                             <th>Nama Lengkap</th>
-                            <th>Username</th>
+                            <th>Profile</th>
+                            <th>Dokument</th>
+                            <!-- <th>Username</th> -->
                             <th>Email</th>
                             <th>Group</th>
+                            <th>Status</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -99,6 +102,11 @@
 
     $(document).ready(function() {
         var CSRF_TOKEN = "{{@csrf_token()}}";
+        const tglLahir = flatpickr("#tgl_lahir", {
+            enableTime: false,
+            dateFormat: "Y-m-d",
+            required: true
+        }); // flatpickr
         table = $('#contentTable').on('init.dt', function() {
             $('div.dataTables_length select').removeClass(
                 'custom-select custom-select-sm',
@@ -124,16 +132,66 @@
                     name: 'fullname'
                 },
                 {
-                    data: 'username',
-                    name: 'username'
+                    data: "profile_picture",
+                    className: 'dt-center',
+                    "render": function(data) {
+
+
+                        @if(env('APP_ENV') == 'production')
+                            (data ? img = `<img class="img-thumbnail img-responsive" style="max-width: 110px; max-height: 110px" src='{{asset('storage/images/${data}')}}'>` :
+                                img = `<img class="img-thumbnail img-responsive" style="max-width: 110px; max-height: 110px" src='{{asset('img/no_image.jpg')}}'>`)
+                        return img;
+                        @else
+                        let img = '';
+                        (data ? img = `<img class="img-thumbnail img-responsive" style="max-width: 110px; max-height: 110px" src='{{asset('storage/images/${data}')}}'>` :
+                            img = `<img class="img-thumbnail img-responsive" style="max-width: 110px; max-height: 110px" src='{{asset('img/no_image.jpg')}}'>`)
+                        @endif
+                        return img;
+                    }
                 },
+                {
+                    data: "dokument",
+                    className: 'dt-center',
+                    "render": function(data) {
+
+
+                        @if(env('APP_ENV') == 'production')
+                            (data ? img = `<img class="img-thumbnail img-responsive" style="max-width: 110px; max-height: 110px" src='{{asset('storage/images/${data}')}}'>` :
+                                img = `<img class="img-thumbnail img-responsive" style="max-width: 110px; max-height: 110px" src='{{asset('img/no_image.jpg')}}'>`)
+                        return img;
+                        @else
+                        let img = '';
+                        (data ? img = `<img class="img-thumbnail img-responsive" style="max-width: 110px; max-height: 110px" src='{{asset('storage/images/${data}')}}'>` :
+                            img = `<img class="img-thumbnail img-responsive" style="max-width: 110px; max-height: 110px" src='{{asset('img/no_image.jpg')}}'>`)
+                        @endif
+                        return img;
+                    }
+                },
+                // {
+                //     data: 'username',
+                //     name: 'username'
+                // },
                 {
                     data: 'email',
                     name: 'email'
                 },
                 {
                     data: 'group.name',
-                    name: 'group'
+                    name: 'group',
+                    defaultContent: '#'
+                },
+                {
+                    data: 'status',
+                    name: 'status',
+                    render: function(data, type, row) {
+                        if (data == 1) {
+                            return 'Aktif';
+                        } else if (data == 0) {
+                            return 'Tidak Aktif';
+                        } else {
+                            return '';
+                        }
+                    }
                 },
                 {
                     data: 'action',
@@ -159,8 +217,19 @@
                 console.log(response)
                 $('#fullname').val(response.fullname)
                 $('#username').val(response.username)
+                $('#nik').val(response.nik)
                 $('#email').val(response.email)
+                $('#no_hp').val(response.no_hp)
+                $('#alamat').val(response.alamat)
+                $('#tempat_lahir').val(response.tempat_lahir)
+                $('#tgl_lahir').val(response.tgl_lahir)
+                $('#profile_picture').val(response.profile_picture)
                 $('#group').val(response.group.id).trigger('change')
+                $('#unlat').val(response.unlat.id).trigger('change')
+                $('#sabuk').val(response.sabuk.id).trigger('change')
+                $('#kategori').val(response.kategori.id).trigger('change')
+                $('#agama').val(response.agama.id).trigger('change')
+                $('#status').val(response.status).trigger('change')
             });
 
         });
@@ -178,8 +247,19 @@
                 $('#id').val(response.id)
                 $('#fullname').val(response.fullname)
                 $('#username').val(response.username)
+                $('#nik').val(response.nik)
                 $('#email').val(response.email)
+                $('#no_hp').val(response.no_hp)
+                $('#alamat').val(response.alamat)
+                $('#tempat_lahir').val(response.tempat_lahir)
+                $('#tgl_lahir').val(response.tgl_lahir)
+                $('#profile_picture').val(response.profile_picture)
                 $('#group').val(response.group.id).trigger('change')
+                $('#unlat').val(response.unlat.id).trigger('change')
+                $('#sabuk').val(response.sabuk.id).trigger('change')
+                $('#kategori').val(response.kategori.id).trigger('change')
+                $('#agama').val(response.agama.id).trigger('change')
+                $('#status').val(response.status).trigger('change')
             });
 
         });
