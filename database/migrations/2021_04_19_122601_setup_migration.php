@@ -65,13 +65,13 @@ class SetupMigration extends Migration
             $table->uuid('group_id');
             $table->string('fullname');
             $table->string('username');
-            $table->string('nik');
-            $table->string('alamat');
+            $table->string('nik')->nullable(true);
+            $table->string('alamat')->nullable(true);;
             //            $table->string('email')->unique()->nullable(true);
             $table->string('email')->nullable(true);
-            $table->string('no_hp');
-            $table->string('tempat_lahir');
-            $table->string('tgl_lahir');
+            $table->string('no_hp')->nullable(true);;
+            $table->string('tempat_lahir')->nullable(true);;
+            $table->string('tgl_lahir')->nullable(true);;
             $table->string('password');
             $table->string('profile_picture')->nullable(true);
             $table->string('dokument')->nullable(true);
