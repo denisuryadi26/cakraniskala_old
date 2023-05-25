@@ -63,10 +63,10 @@ class SetupMigration extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->uuid('group_id');
-            $table->uuid('sabuk_id');
-            $table->uuid('agama_id');
-            $table->uuid('kategori_id');
-            $table->uuid('unlat_id');
+            $table->uuid('sabuk_id')->nullable(true);
+            $table->uuid('agama_id')->nullable(true);
+            $table->uuid('kategori_id')->nullable(true);
+            $table->uuid('unlat_id')->nullable(true);
             $table->string('fullname');
             $table->string('username');
             $table->string('nik')->nullable(true);
